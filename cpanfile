@@ -1,0 +1,1 @@
+requires 'HTTP::Thin::UserAgent';
