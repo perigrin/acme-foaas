@@ -9,176 +9,190 @@ use HTTP::Thin::UserAgent;
 
 my $motherfucking = 'http://www.foaas.com';
 
-sub version {
-    http(GET "$motherfucking/version")->as_json()->decoded_content;
+
+has response => (
+    writer => '_set_response',
+);
+
+
+sub as_text($self) {
+    join "\n", $self->decoded_content->{message}, $self->decoded_content->{subtitle};
+}
+
+sub data($self) {
+   $self->decoded_content;
+}
+
+sub version($self) {
+    $self->response( http(GET "$motherfucking/version")->as_json()->response );
 }
 
 sub off($self, $name, $from) {
-    http(GET "$motherfucking/off/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/off/$name/$from")->as_json()->response;  )
 }
 
 sub you($self, $name, $from) {
-    http(GET "$motherfucking/you/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/you/$name/$from")->as_json()->response;  )
 }
 
 sub this($self, $from) {
-    http(GET "$motherfucking/this/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/this/$from")->as_json()->response;  )
 }
 
 sub that($self, $from) {
-    http(GET "$motherfucking/this/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/this/$from")->as_json()->response;  )
 }
 
 sub everything($self, $from) {
-    http(GET "$motherfucking/everything/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/everything/$from")->as_json()->response;  )
 }
 
 
 sub everyone($self, $from) {
-    http(GET "$motherfucking/everyone/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/everyone/$from")->as_json()->response;  )
 }
 
 sub donut($self, $name, $from) {
-    http(GET "$motherfucking/donut/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/donut/$name/$from")->as_json()->response;  )
 }
 
 sub shakespeare($self, $name, $from) {
-    http(GET "$motherfucking/shakespeare/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/shakespeare/$name/$from")->as_json()->response;  )
 }
 
 sub linus($self, $name, $from) {
-    http(GET "$motherfucking/linus/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/linus/$name/$from")->as_json()->response;  )
 }
 
 sub king($self, $name, $from) {
-    http(GET "$motherfucking/king/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/king/$name/$from")->as_json()->response;  )
 }
 
 sub pink($self, $from) {
-    http(GET "$motherfucking/pink/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/pink/$from")->as_json()->response;  )
 }
 
 sub life($self, $from) {
-    http(GET "$motherfucking/life/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/life/$from")->as_json()->response;  )
 }
 
 sub chainsaw($self, $name, $from) {
-    http(GET "$motherfucking/chainsaw/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/chainsaw/$name/$from")->as_json()->response;  )
 }
 
 sub outside($self, $name, $from) {
-    http(GET "$motherfucking/outside/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/outside/$name/$from")->as_json()->response;  )
 }
 
 sub thing($self, $from) {
-    http(GET "$motherfucking/thing/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/thing/$from")->as_json()->response;  )
 }
 
 sub thanks($self, $from) {
-    http(GET "$motherfucking/thanks/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/thanks/$from")->as_json()->response;  )
 }
 sub flying($self, $from) {
-    http(GET "$motherfucking/flying/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/flying/$from")->as_json()->response;  )
 }
 
 sub fascinating($self, $from) {
-    http(GET "$motherfucking/fascinating/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/fascinating/$from")->as_json()->response;  )
 }
 
 sub madison($self, $name, $from) {
-    http(GET "$motherfucking/madison/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/madison/$name/$from")->as_json()->response;  )
 }
 
 sub cool($self, $from) {
-    http(GET "$motherfucking/cool/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/cool/$from")->as_json()->response;  )
 }
 
 sub field($self, $name, $from, $reference) {
-    http(GET "$motherfucking/field/$name/$from/$reference")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/field/$name/$from/$reference")->as_json()->response;  )
 }
 
 sub nugget($self, $name, $from) {
-    http(GET "$motherfucking/nugget/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/nugget/$name/$from")->as_json()->response;  )
 }
 
 sub yoda($self, $name, $from) {
-    http(GET "$motherfucking/yoda/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/yoda/$name/$from")->as_json()->response;  )
 }
 
 sub ballmer($self, $name, $company, $from) {
-    http(GET "$motherfucking/ballmer/$name/$company/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/ballmer/$name/$company/$from")->as_json()->response;  )
 }
 
 sub what($self, $from) {
-    http(GET "$motherfucking/what/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/what/$from")->as_json()->response;  )
 }
 
 sub because($self, $name, $from) {
-    http(GET "$motherfucking/because/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/because/$from")->as_json()->response;  )
 }
 
 sub caniuse($self, $tool, $from) {
-    http(GET "$motherfucking/caniuse/$tool/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/caniuse/$tool/$from")->as_json()->response;  )
 }
 
 sub bye($self, $from) {
-    http(GET "$motherfucking/bye/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/bye/$from")->as_json()->response;  )
 }
 
 sub diabetes($self, $from) {
-    http(GET "$motherfucking/diabetes/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/diabetes/$from")->as_json()->response;  )
 }
 
 sub bus($self, $name, $from) {
-    http(GET "$motherfucking/bus/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/bus/$name/$from")->as_json()->response;  )
 }
 
 sub xmas($self, $name, $from) {
-    http(GET "$motherfucking/xmas/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/xmas/$name/$from")->as_json()->response;  )
 }
 
 sub bday($self, $name, $from) {
-    http(GET "$motherfucking/bday/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/bday/$name/$from")->as_json()->response;  )
 }
 
 sub awesome($self, $from) {
-    http(GET "$motherfucking/awesome/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/awesome/$from")->as_json()->response;  )
 }
 
 sub tucker($self, $from) {
-    http(GET "$motherfucking/tucker/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/tucker/$from")->as_json()->response;  )
 }
 
 sub bucket($self, $from) {
-    http(GET "$motherfucking/bucket/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/bucket/$from")->as_json()->response;  )
 }
 
 sub family($self, $from) {
-    http(GET "$motherfucking/family/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/family/$from")->as_json()->response;  )
 }
 
 sub shutup($self, $name, $from) {
-    http(GET "$motherfucking/shutup/$name/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/shutup/$name/$from")->as_json()->response;  )
 }
 
 sub zayn($self, $from) {
-    http(GET "$motherfucking/zayn/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/zayn/$from")->as_json()->response;  )
 }
 
 sub keepcalm($self, $reaction, $from) {
-    http(GET "$motherfucking/keepcalm/$reaction/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/keepcalm/$reaction/$from")->as_json()->response;  )
 }
 
 sub dosomething($self, $do, $something, $from) {
-    http(GET "$motherfucking/dosomething/$do/$something/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/dosomething/$do/$something/$from")->as_json()->response;  )
 }
 
 sub thumbs($self, $from) {
-    http(GET "$motherfucking/thumbs/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/thumbs/$from")->as_json()->response;  )
 }
 
 sub retard($self, $from) {
-    http(GET "$motherfucking/retard/$from")->as_json()->decoded_content;
+    $self->response( http(GET "$motherfucking/retard/$from")->as_json()->response;  )
 }
 
 1;
